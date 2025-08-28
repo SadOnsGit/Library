@@ -54,6 +54,9 @@ class Book(models.Model):
     release_date = models.DateField(
         verbose_name='Дата выхода книги',
     )
+    image = models.ImageField(
+        upload_to='books/', null=True, blank=True
+    )
 
     def __str__(self):
         return self.name
