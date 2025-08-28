@@ -6,13 +6,15 @@ User = get_user_model()
 
 
 class Author(models.Model):
-    author = models.CharField(
+    first_name = models.CharField(
         max_length=50,
-        unique=True
+    )
+    last_name = models.CharField(
+        max_length=50,
     )
 
     def __str__(self):
-        return self.author
+        return f'{self.first_name} {self.last_name}'
 
     class Meta:
         verbose_name = 'Автор'
