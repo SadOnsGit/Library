@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block title %}
+    Авторизация
+{% endblock %}
+
 {% block content %}
   <section class="py-12 bg-gray-100">
     <div class="container mx-auto px-4">
@@ -33,7 +37,7 @@
           <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300">Войти</button>
         </form>
         <p class="mt-4 text-center text-gray-600">
-          Нет аккаунта? <a href="#" class="text-blue-600 hover:underline">Зарегистрируйтесь</a>
+          Нет аккаунта? <a href={% url 'users:registration' %} class="text-blue-600 hover:underline">Зарегистрируйтесь</a>
         </p>
       </div>
     </div>
