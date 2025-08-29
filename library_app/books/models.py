@@ -37,20 +37,28 @@ class Category(models.Model):
 
 class Book(models.Model):
     name = models.CharField(
-        max_length=50
+        max_length=50,
+        verbose_name='Название книги'
     )
     author = models.ManyToManyField(
         Author,
-        related_name='books'
+        related_name='books',
+        verbose_name='Автор книги'
+    )
+    description = models.CharField(
+        max_length=100,
+        verbose_name='Описание'
     )
     category = models.ManyToManyField(
         Category,
-        related_name='category_books'
+        related_name='category_books',
+        verbose_name='Категория'
     )
     published_author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name='published_books'
+        related_name='published_books',
+        verbose_name='Автор публикации'
     )
     release_date = models.DateField(
         verbose_name='Дата выхода книги',
@@ -58,10 +66,13 @@ class Book(models.Model):
     image = models.ImageField(
         upload_to='books/', null=True, blank=True
     )
-
-    def __str__(self):
-        return self.name
+    url = models.URLField(
+        verbose_name='URL для скачивания'
+    )
 
     class Meta:
         verbose_name = 'Книга'
         verbose_name_plural = 'книги'
+
+    def __str__(self):
+        return self.name
