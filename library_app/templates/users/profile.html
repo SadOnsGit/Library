@@ -5,5 +5,42 @@
 {% endblock %}
 
 {% block content %}
-    Профиль
+    <!-- Секция профиля -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold text-center mb-8">Профиль пользователя</h2>
+            <div class="bg-white shadow-lg rounded-lg p-6 max-w-2xl mx-auto">
+                <div class="flex justify-center mb-6">
+                    {% if user.avatar %}
+                        <img src="#" alt="Аватар пользователя" class="w-24 h-24 rounded-full object-cover border-2 border-blue-600">
+                    {% else %}
+                        <img src="#" alt="Аватар по умолчанию" class="w-24 h-24 rounded-full object-cover border-2 border-blue-600">
+                    {% endif %}
+                </div>
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800">Личная информация</h3>
+                    <p class="mt-2 text-gray-700"><strong>Никнейм:</strong> {{ user.username }}</p>
+                    <p class="mt-2 text-gray-700"><strong>Имя Фамилия:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+                    <p class="mt-2 text-gray-700"><strong>Email:</strong> {{ user.email }}</p>
+                    <p class="mt-2 text-gray-700"><strong>Дата регистрации:</strong> {{ user.date_joined|date:"d.m.Y" }}</p>
+                    <p class="mt-2 text-gray-700"><strong>Прочитанных книг:</strong> {{ user.count_books }}</p>
+                </div>
+                {% comment %} <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800">Ваши книги</h3>
+                    {% if user_books %}
+                        <ul class="mt-2 list-disc list-inside text-gray-700">
+                            {% for book in user_books %}
+                                <li>{{ book.title }} - {{ book.author }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p class="mt-2 text-gray-700">У вас пока нет взятых книг.</p>
+                    {% endif %}
+                </div> {% endcomment %}
+                <div>
+                    <a href="#" class="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">Редактировать профиль</a>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
