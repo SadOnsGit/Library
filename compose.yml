@@ -1,0 +1,9 @@
+services:
+  web:
+    build: ./library_app
+    image: library_app:1.0.0
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - 127.0.0.1:8000:8000
+    env_file:
+      - ./library_app/.env.dev
